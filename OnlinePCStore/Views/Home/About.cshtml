@@ -1,7 +1,105 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Online PC Store</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+           function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <!-- Custom Theme files -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- font-awesome icons -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.countdown.css" /> <!-- countdown -->
+    <!-- //js -->
+    <!-- web fonts -->
+    <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //web fonts -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+</head>
+<body>
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
 
-<p>Use this area to provide additional information.</p>
+    <!-- about -->
+    <div class="about">
+        <div class="container">
+            <div class="w3ls_about_grids">
+                <div class="col-md-6 w3ls_about_grid_left">
+                    <p>
+                        •THE ’ONLINE PC ASSEMBLY’ WEBSITE IS to buy the PCs online according to the custom specification.
+                        •It is a computer parts assembly website  where a user may select various computer parts online and it will be delivered to the users address.
+                        •The computer assembly website  allows users to select from a list of computer parts of various companies and models.
+                        •User can view details of the parts without going anywhere.
+                        •It is convenient for users as this system provides accurate cost and description of the system.
+                        •The website is flexible to be used and for e-shopping.
+                        •The products are delivered to the customer in his/her house so this becomes more convenient for them.
+                        •The system calculates bill instantly and user can pay online.
+                        •Hence the system saves time, efforts and cost.
+
+
+                    </p>
+                    
+                    <div class="clearfix"> </div>
+                    <div class="col-xs-2 w3ls_about_grid_left1">
+                        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-6 w3ls_about_grid_right">
+                    <img src="" alt=" " class="img-responsive" />
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about -->
+    <!-- cart-js -->
+    <script src="js/minicart.js"></script>
+    <script>
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+            var items, len, i;
+
+            if (this.subtotal() > 0) {
+                items = this.items();
+
+                for (i = 0, len = items.length; i < len; i++) {
+                }
+            }
+        });
+    </script>
+    <!-- //cart-js -->
+</body>
+</html>

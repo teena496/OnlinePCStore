@@ -191,27 +191,101 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703211827421_Initial.cs" />
+    <Compile Include="Migrations\201703211827421_Initial.Designer.cs">
+      <DependentUpon>201703211827421_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703211921074_SeedUser.cs" />
+    <Compile Include="Migrations\201703211921074_SeedUser.Designer.cs">
+      <DependentUpon>201703211921074_SeedUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703212030344_UpdateCustomerModel.cs" />
+    <Compile Include="Migrations\201703212030344_UpdateCustomerModel.Designer.cs">
+      <DependentUpon>201703212030344_UpdateCustomerModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703290142471_UpdateContact.cs" />
+    <Compile Include="Migrations\201703290142471_UpdateContact.Designer.cs">
+      <DependentUpon>201703290142471_UpdateContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704031412257_Update.cs" />
+    <Compile Include="Migrations\201704031412257_Update.Designer.cs">
+      <DependentUpon>201704031412257_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\fasthover.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\jquery.countdown.css" />
+    <Content Include="css\popuo-box.css" />
+    <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\11.jpg" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\20.jpg" />
+    <Content Include="images\21.jpg" />
+    <Content Include="images\45.jpg" />
+    <Content Include="images\46.jpg" />
+    <Content Include="images\47.jpg" />
+    <Content Include="images\48.jpg" />
+    <Content Include="images\49.jpg" />
+    <Content Include="images\50.jpg" />
+    <Content Include="images\51.jpg" />
+    <Content Include="images\7.jpg" />
+    <Content Include="images\8.jpg" />
+    <Content Include="images\a.jpg" />
+    <Content Include="images\arrow.png" />
+    <Content Include="images\check.png" />
+    <Content Include="images\close.png" />
+    <Content Include="images\img-sp.png" />
+    <Content Include="images\left-arrow.png" />
+    <Content Include="images\right-arrow.png" />
+    <Content Include="images\star-.png" />
+    <Content Include="images\star.png" />
+    <Content Include="js\bootstrap-3.1.1.min.js" />
+    <Content Include="js\easyResponsiveTabs.js" />
+    <Content Include="js\imagezoom.js" />
+    <Content Include="js\jquery.countdown.js" />
+    <Content Include="js\jquery.flexisel.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\jquery.magnific-popup.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.wmuSlider.js" />
+    <Content Include="js\minicart.js" />
+    <Content Include="js\script.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="images\cf2ae999-2ae5-4738-9426-6c87f2181511.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -257,6 +331,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Product\AddProduct.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin .cshtml" />
+    <Content Include="Views\ProductAdmin.cshtml" />
+    <Content Include="Views\Product\AddToCart.cshtml" />
+    <Content Include="Views\Product\SingleProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -275,6 +354,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703211827421_Initial.resx">
+      <DependentUpon>201703211827421_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211921074_SeedUser.resx">
+      <DependentUpon>201703211921074_SeedUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212030344_UpdateCustomerModel.resx">
+      <DependentUpon>201703212030344_UpdateCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703290142471_UpdateContact.resx">
+      <DependentUpon>201703290142471_UpdateContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704031412257_Update.resx">
+      <DependentUpon>201704031412257_Update.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

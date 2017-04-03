@@ -9,18 +9,30 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlinePCStore.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace OnlinePCStore.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
+
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
+
         }
+        protected new void Dispose()
+
+        {
+            _context.Dispose();
+        }
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
@@ -55,10 +67,15 @@ namespace OnlinePCStore.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
+
         public ActionResult Login(string returnUrl)
+
         {
+
             ViewBag.ReturnUrl = returnUrl;
+
             return View();
+
         }
 
         //
@@ -155,8 +172,13 @@ namespace OnlinePCStore.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("CanManageProduct"));
+                    //await UserManager.AddToRoleAsync(user.Id, "CanManageProduct");
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

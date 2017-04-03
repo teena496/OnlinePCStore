@@ -1,31 +1,740 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using OnlinePCStore.Models
+@model List<Product>
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Online PC Store</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+           function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <!-- Custom Theme files -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- font-awesome icons -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.countdown.css" /> <!-- countdown -->
+    <!-- //js -->
+    <!-- web fonts -->
+    <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //web fonts -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+</head>
+<body>
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    
+    <!-- header -->
+   
+    <div class="header" id="home1">
+        <div class="container">
+
+            <div class="jumborton">
+                <div class="w3l_logo">
+                    <h1><a href="index.html">Online PC Store<span>The Real PC World.</span></a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if(System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+            <div class="cart cart box_1">
+                <form action="#" method="post" class="last">
+                    <input type="hidden" name="cmd" value="_cart" />
+                    <input type="hidden" name="display" value="1" />
+                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down"></i></button>
+                </form>
+            </div>
+    }
+
+    <!-- //header -->
+
+    <!-- banner-bottom -->
+     
+ @for (int i = 0; i < Model.Count-4; i = i+4)
+ {
+     
+    <div class="banner-bottom">
+        <div class="container">
+
+            <div class="col-md-12 wthree_banner_bottom_center">
+                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+                            <div class="agile_ecommerce_tabs">
+                                <div class="col-md-3 agile_ecommerce_tab_left">
+                                        <img src=@Model[i + 0].ImageUrl alt=" " />
+                                    <h5>@Html.ActionLink(Model[i+0].Name, "SingleProduct", "Product", new { id = Model[i+0].Id }) </h5>
+                                    <div class="simpleCart_shelfItem">
+                                        <p><span>Rs.810</span> <i class="item_price">@Model[i + 0].Price</i></p>
+                                        <form action="#" method="post">
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="w3ls_item" value=@Model[i+0].Name/>
+                                            <input type="hidden" name="amount" value=@Model[i + 0].Price />
+                                            <button type="submit" class="w3ls-cart">Add to cart</button>
+                                            @*@Html.ActionLink("Add To Cart", "Cart", "Product",new { @class="w3ls-cart" ,type="submit" },new { PId = Model[i + 0].Id },new { CId = User.Identity.})*@
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-3 agile_ecommerce_tab_left">
+                                        <img src=@Model[i + 1].ImageUrl alt=" " />
+                                                                    
+                                    <h5>@Html.ActionLink(Model[i + 1].Name, "SingleProduct", "Product") </h5>
+                                    <div class="simpleCart_shelfItem">
+                                        <p><span>Rs.3,000</span> <i class="item_price">@Model[i + 1].Price</i></p>
+                                        <form action="#" method="post">
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="w3ls_item" value=@Model[i+1].Name />
+                                            <input type="hidden" name="amount" value=@Model[i + 1].Price />
+                                            <button type="submit" class="w3ls-cart">Add to cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-3 agile_ecommerce_tab_left">
+                                        <img src=@Model[i + 2].ImageUrl alt=" "  />
+                                    <h5>@Html.ActionLink("Product", "SingleProduct", "Product") </h5>
+                                   
+                                   <div class="simpleCart_shelfItem">
+                                        <p><span>Rs.920</span> <i class="item_price"> @Model[i + 2].Price </i></p>
+                                        <form action="#" method="post">
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="w3ls_item" value=@Model[i+2].Name />
+                                            <input type="hidden" name="amount" value=@Model[i + 2].Price />
+                                            <button type="submit" class="w3ls-cart">Add to cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3 agile_ecommerce_tab_left">
+                                        <img src=@Model[i + 3].ImageUrl alt=" "  />
+                                    <h5>@Html.ActionLink(Model[i + 3].Name, "SingleProduct", "Product") </h5>
+                                    <div class="simpleCart_shelfItem">
+                                        <p><span>Rs.2,999</span> <i class="item_price">@Model[i + 3].Price</i></p>
+                                        <form action="#" method="post">
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="w3ls_item" value=@Model[i+3].Name/>
+                                            <input type="hidden" name="amount" value=@Model[i + 3].Price />
+                                            <button type="submit" class="w3ls-cart">Add to cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ }
+    <!-- //banner-bottom -->
+    <!-- modal-video -->
+    <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="col-md-5 modal_body_left">
+                            <img src="images/3.jpg" alt=" " class="img-responsive" />
+                        </div>
+                        <div class="col-md-7 modal_body_right">
+                            <h4>Harddisk</h4>
+                            <p>
+                                160 GB capacity ,SATA/300 interface ,7200 RPM spindle speed, 4.16 ms average latency ,2 MB buffer, 18 ms average seek time,
+                                3.5-inch form factor, Specifically designed for DVR and Desktop Applications
+                            </p>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="modal_body_right_cart simpleCart_shelfItem">
+                                <p><span>Rs.810</span> <i class="item_price">Rs.765</i></p>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="w3ls_item" value="Harddisk">
+                                    <input type="hidden" name="amount" value="765.00">
+                                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal video-modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModal1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="col-md-5 modal_body_left">
+                            <img src="images/38.jpg" alt=" " class="img-responsive" />
+                        </div>
+                        <div class="col-md-7 modal_body_right">
+                            <h4>Mouse</h4>
+                            <p>
+                                Type: Corded mouse ,800 dpi optical precision ,Works with windows XP, windows vista and windows 7 ,3-year limited hardware warranty,  Comfortable, ambidextrous design 800 dpi optical precision ,3-year limited hardware warranty ,
+                                Technical Specifications: Corded mouse 3 buttons Optical tracking
+                            </p>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="modal_body_right_cart simpleCart_shelfItem">
+                                <p><span>Rs.320</span> <i class="item_price">Rs.275</i></p>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="w3ls_item" value="Headphones">
+                                    <input type="hidden" name="amount" value="275.00">
+                                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="modal video-modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="col-md-5 modal_body_left">
+                            <img src="images/11.jpg" alt=" " class="img-responsive" />
+                        </div>
+                        <div class="col-md-7 modal_body_right">
+                            <h4>HP 21KD 20.7-inch FULL HD LED Backlit Monitor (Black) </h4>
+                            <p>
+                                Full HD (FHD) content required to view FHD images
+                                Energy star is a registered trademark of the U.S. environmental protection agency
+                                EPEAT registered where applicable or supported
+                            </p>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="modal_body_right_cart simpleCart_shelfItem">
+                                <p><span>Rs.6,500</span> <i class="item_price">Rs.6,290</i></p>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="w3ls_item" value="Laptop">
+                                    <input type="hidden" name="amount" value="6290.00">
+                                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="modal video-modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModal3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="col-md-5 modal_body_left">
+                            <img src="images/14.jpg" alt=" " class="img-responsive" />
+                        </div>
+                        <div class="col-md-7 modal_body_right">
+                            <h4>SSD</h4>
+                            <p>
+                                Sequential read speeds of up to 545mbps and sequential write speeds of up to 525mbps
+                                An industry-leading 1.75M hours MTTF and several error-correction technologies for lasting reliability
+                                Optimized for multitasking to simultaneously run resource-heavy applications without system slow-down
+                                Available in 2.5-inch/7mm and M.2 2280 models to accommodate most PCs
+                                WD FIT Lab certification for compatibility across a wide range of laptop and desktop computers
+                                The free, downloadable WD SSD Dashboard lets you easily monitor the status of your drive
+                                Includes a 3-year limited warranty so upgrading your storage is worry-free
+                            </p>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="modal_body_right_cart simpleCart_shelfItem">
+                                <p><span>Rs.6,900</span> <i class="item_price">Rs.6,599</i></p>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="w3ls_item" value="Mobile Phone1">
+                                    <input type="hidden" name="amount" value="6599.00">
+                                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="modal video-modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModal4">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="col-md-5 modal_body_left">
+                            <img src="images/17.jpg" alt=" " class="img-responsive" />
+                        </div>
+                        <div class="col-md-7 modal_body_right">
+                            <h4>New Model Mixer Grinder</h4>
+                            <p>
+                                Excepteur sint occaecat laboris nisi ut aliquip ex ea
+                                commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                eu fugiat nulla pariatur cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="modal_body_right_cart simpleCart_shelfItem">
+                                <p><span>$460</span> <i class="item_price">$450</i></p>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="w3ls_item" value="Mobile Phone1">
+                                    <input type="hidden" name="amount" value="450.00">
+                                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                                </form>
+                            </div>
+                            <h5>Color</h5>
+                            <div class="color-quality">
+                                <ul>
+                                    <li><a href="#"><span></span></a></li>
+                                    <li><a href="#" class="brown"><span></span></a></li>
+                                    <li><a href="#" class="purple"><span></span></a></li>
+                                    <li><a href="#" class="gray"><span></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="modal video-modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModal5">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="col-md-5 modal_body_left">
+                            <img src="images/36.jpg" alt=" " class="img-responsive" />
+                        </div>
+                        <div class="col-md-7 modal_body_right">
+                            <h4>Dry Vacuum Cleaner</h4>
+                            <p>
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="modal_body_right_cart simpleCart_shelfItem">
+                                <p><span>$960</span> <i class="item_price">$920</i></p>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="w3ls_item" value="Vacuum Cleaner">
+                                    <input type="hidden" name="amount" value="920.00">
+                                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                                </form>
+                            </div>
+                            <h5>Color</h5>
+                            <div class="color-quality">
+                                <ul>
+                                    <li><a href="#"><span></span></a></li>
+                                    <li><a href="#" class="brown"><span></span></a></li>
+                                    <li><a href="#" class="purple"><span></span></a></li>
+                                    <li><a href="#" class="gray"><span></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="modal video-modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModal6">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="col-md-5 modal_body_left">
+                            <img src="images/37.jpg" alt=" " class="img-responsive" />
+                        </div>
+                        <div class="col-md-7 modal_body_right">
+                            <h4>Kitchen & Dining Accessories</h4>
+                            <p>
+                                Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea
+                                commodo consequat.Duis aute irure dolor in
+                                reprehenderit in voluptate velit esse cillum dolore
+                                eu fugiat nulla pariatur. Excepteur sint occaecat
+                                cupidatat non proident, sunt in culpa qui officia
+                                deserunt mollit anim id est laborum.
+                            </p>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star-.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="rating-left">
+                                    <img src="images/star.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="modal_body_right_cart simpleCart_shelfItem">
+                                <p><span>$280</span> <i class="item_price">$250</i></p>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="w3ls_item" value="Induction Stove">
+                                    <input type="hidden" name="amount" value="250.00">
+                                    <button type="submit" class="w3ls-cart">Add to cart</button>
+                                </form>
+                            </div>
+                            <h5>Color</h5>
+                            <div class="color-quality">
+                                <ul>
+                                    <li><a href="#"><span></span></a></li>
+                                    <li><a href="#" class="brown"><span></span></a></li>
+                                    <li><a href="#" class="purple"><span></span></a></li>
+                                    <li><a href="#" class="gray"><span></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- //modal-video -->
+    <!-- special-deals -->
+    <div class="special-deals">
+        <div class="container">
+            <h2>Special Deals</h2>
+            <div class="w3agile_special_deals_grids">
+                <div class="col-md-12 w3agile_special_deals_grid_left">
+                    <div class="w3agile_special_deals_grid_left_grid">
+                        <img src="images/21.jpg" alt=" " class="img-responsive" />
+                        <div class="w3agile_special_deals_grid_left_grid_pos1">
+                            <h5>30%<span>Off/-</span></h5>
+                        </div>
+                        <div class="w3agile_special_deals_grid_left_grid_pos">
+                            <h4>We Offer <span>Best Products</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- new-products -->
+    <div class="new-products">
+        <div class="container">
+            <h3>New Products</h3>
+            <div class="agileinfo_new_products_grids">
+                <div class="col-md-3 agileinfo_new_products_grid">
+                    <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+                        <div class="hs-wrapper hs-wrapper1">
+                            <img src="images/12.jpg" alt=" " />
+
+                            <div class="w3_hs_bottom w3_hs_bottom_sub">
+                                <ul>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h5><a href="single.html">Laptops</a></h5>
+                        <div class="simpleCart_shelfItem">
+                            <p><span>$520</span> <i class="item_price">$500</i></p>
+                            <form action="#" method="post">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="add" value="1">
+                                <input type="hidden" name="w3ls_item" value="Red Laptop">
+                                <input type="hidden" name="amount" value="500.00">
+                                <button type="submit" class="w3ls-cart">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 agileinfo_new_products_grid">
+                    <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+                        <div class="hs-wrapper hs-wrapper1">
+                            <img src="images/2.jpg" alt=" " />
+
+                            <div class="w3_hs_bottom w3_hs_bottom_sub">
+                                <ul>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h5><a href="single.html">RAM</a></h5>
+                        <div class="simpleCart_shelfItem">
+                            <p><span>$380</span> <i class="item_price">$370</i></p>
+                            <form action="#" method="post">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="add" value="1">
+                                <input type="hidden" name="w3ls_item" value="Black Phone">
+                                <input type="hidden" name="amount" value="370.00">
+                                <button type="submit" class="w3ls-cart">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 agileinfo_new_products_grid">
+                    <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+                        <div class="hs-wrapper hs-wrapper1">
+                            <img src="images/p10.jpg" alt=" " />
+
+                            <div class="w3_hs_bottom w3_hs_bottom_sub">
+                                <ul>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h5><a href="single.html">SSD</a></h5>
+                        <div class="simpleCart_shelfItem">
+                            <p><span>$150</span> <i class="item_price">$100</i></p>
+                            <form action="#" method="post">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="add" value="1">
+                                <input type="hidden" name="w3ls_item" value="Kids Toy">
+                                <input type="hidden" name="amount" value="100.00">
+                                <button type="submit" class="w3ls-cart">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 agileinfo_new_products_grid">
+                    <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+                        <div class="hs-wrapper hs-wrapper1">
+                            <img src="images/p9.jpg" alt=" " />
+
+                            <div class="w3_hs_bottom w3_hs_bottom_sub">
+                                <ul>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h5><a href="single.html"> USB keyboard </a></h5>
+                        <div class="simpleCart_shelfItem">
+                            <p><span>Rs.700</span> <i class="item_price">Rs.625</i></p>
+                            <form action="#" method="post">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="add" value="1">
+                                <input type="hidden" name="w3ls_item" value=" USB keyboard (Black) ">
+                                <input type="hidden" name="amount" value="625.00">
+                                <button type="submit" class="w3ls-cart">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- //new-products -->
+   
+    <!-- cart-js -->
+@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    <script src="js/minicart.js"></script>
+    <script>
+                w3ls.render();
+
+                w3ls.cart.on('w3sb_checkout', function (evt) {
+                    var items, len, i;
+
+                    if (this.subtotal() > 0) {
+                        items = this.items();
+
+                        for (i = 0, len = items.length; i < len; i++) {
+                        }
+                    }
+                });
+    </script>
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <!-- //cart-js -->
+</body>
+</html>
